@@ -1,0 +1,832 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap");
+
+:root {
+    --font-golostext: "Golos text";
+    --font-merriweather: "Merriweather";
+    --font-default: var(--font-golostext), Arial, Helvetica, sans-serif;
+    --color-white: #ffffff;
+    --color-default: #313131;
+    --color-header: #595653;
+    --color-btn: #1f1f1f;
+    --color-grey: #d0d0d0;
+    --color-blue: #3057a2;
+    --color-warn: #f54932;
+    --color-yellow: #fbce51;
+    --background-pink: #ffe5e5;
+    --background-beige: #e9ded4;
+    --background-default: var(--color-white);
+    --hover-black: var(--color-btn);
+    --hover-blue: var(--color-blue);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+html {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: normal;
+    font-style: normal;
+    font-family: var(--font-default);
+    color: #000000;
+    text-rendering: optimizeLegibility;
+}
+body {
+    width: 100%;
+    height: 100%;
+}
+a {
+    color: #000000;
+    text-decoration: none;
+}
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    max-width: 1366px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+.wrapper-box {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.wrapper-box .header,
+.wrapper-box .footer {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
+.wrapper-box main {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    background-color: var(--color-white);
+    padding: 0 22px;
+}
+
+.header {
+    display: flex;
+    position: relative;
+    z-index: 6;
+}
+.header div {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 18px;
+    width: 150px;
+    color: var(--color-header);
+    margin-left: 6px;
+}
+.promo__header {
+    text-align: start;
+    margin-left: 25px;
+}
+.promo {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    min-height: 700px;
+    padding-top: 26px;
+    padding-bottom: 132px;
+    background-color: var(--background-beige);
+}
+.promo::before {
+    position: absolute;
+    z-index: 5;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../images/background2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.1;
+    pointer-events: none;
+}
+.promo__container {
+    position: absolute;
+    z-index: 6;
+    top: 35px;
+    left: 70px;
+}
+.promo__title {
+    text-align: start;
+    max-width: 542px;
+    margin: 0;
+    margin-top: 62px;
+    font-size: 60px;
+    line-height: 66px;
+    font-weight: 400;
+    font-family: var(--font-merriweather);
+    text-transform: uppercase;
+    color: var(--color-default);
+}
+.desc {
+    text-align: center;
+    margin-top: 0;
+}
+.promo__description {
+    margin: 0;
+    margin-top: 24px;
+    text-align: center;
+    max-width: 542px;
+    font-size: 18px;
+    line-height: 23px;
+    color: var(--color-default);
+}
+.promo__box {
+    margin: 0;
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+}
+.promo__button {
+    display: inline-flex;
+    text-align: center;
+    font-family: var(--font-default);
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--color-white);
+    padding: 16px 50px 20px 50px;
+    width: 263px;
+    height: 72px;
+    border: none;
+    border-radius: 66px;
+    cursor: pointer;
+    font-weight: 500;
+    background-color: var(--color-btn);
+}
+.promo__button.about {
+    background-color: inherit;
+    border: 1px solid var(--color-btn);
+    color: var(--color-btn);
+}
+.promo__button.about:hover {
+    background-color: var(--color-yellow);
+    color: var(--color-btn);
+    border-color: var(--color-yellow);
+}
+.promo__button:hover {
+    background-color: inherit;
+    border: 1px solid var(--color-btn);
+    color: var(--color-btn);
+}
+.promo__image_city {
+    position: absolute;
+    z-index: 4;
+    top: 244px;
+    right: -140px;
+    height: 430px;
+    min-width: 1620px;
+}
+.promo__image_path {
+    position: absolute;
+    z-index: 6;
+    top: 235px;
+    right: -120px;
+    height: 470px;
+    min-width: 1600px;
+    pointer-events: none;
+}
+.promo__image_knight {
+    position: absolute;
+    z-index: 6;
+    top: 456px;
+    right: 330px;
+}
+.promo__image_pawn {
+    position: absolute;
+    z-index: 6;
+    top: 530px;
+    right: 45px;
+}
+.promo__image_king {
+    position: absolute;
+    z-index: 3;
+    top: 245px;
+    right: 505px;
+}
+.promo__image_queen {
+    position: absolute;
+    z-index: 3;
+    top: 140px;
+    right: 155px;
+}
+
+.promo__ellipse {
+    position: absolute;
+    width: 660px;
+    height: 660px;
+    border-radius: 50%;
+    background-color: var(--color-yellow);
+    z-index: 2;
+    top: -70px;
+    right: 30px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#textPath {
+    fill: var(--color-yellow);
+}
+.promo__ellipse-text {
+    font-family: var(--font-merriweather);
+    text-transform: uppercase;
+    font-size: 18px;
+    fill: var(--color-warn);
+}
+
+.runline {
+    background-color: var(--color-warn);
+}
+.runline__list {
+    margin: 0;
+    list-style-position: inside;
+    font-size: 22px;
+    line-height: 24px;
+    font-family: var(--font-merriweather);
+    color: var(--color-white);
+    padding: 18px 30px;
+    text-transform: uppercase;
+    display: flex;
+    width: 100%;
+    gap: 22px;
+}
+.runline__item--first {
+    list-style: none;
+}
+
+.support {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 1fr 394px;
+    gap: 69px;
+    margin-top: 80px;
+}
+.support__title {
+    margin: 0;
+    text-align: start;
+    color: var(--color-default);
+    font-family: var(--font-merriweather);
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 48px;
+    text-transform: uppercase;
+}
+.support__title span {
+    color: var(--color-warn);
+    font-weight: 600;
+}
+.support__image {
+    border-radius: 100%;
+}
+
+.tournament {
+    margin-top: 64px;
+    text-align: start;
+    display: grid;
+    grid-template-columns: 474px 1fr;
+    grid-template-rows: 150px 1fr 25px;
+    column-gap: 20px;
+}
+.tournament__images {
+    grid-area: 1/1/2;
+    width: 474px;
+    height: 527px;
+    position: relative;
+}
+.tournament__image-background {
+    width: 437px;
+    height: 405px;
+    position: absolute;
+    z-index: 1;
+    top: 30px;
+    left: 30px;
+}
+.tournament__image-player {
+    position: absolute;
+    z-index: 4;
+    top: 30px;
+    left: 30px;
+}
+.tournament__image-vector_95 {
+    position: absolute;
+    z-index: 3;
+    top: 30px;
+    left: 30px;
+}
+.tournament__image-banknote {
+    /* width: 338px;
+    height: 340px; */
+    position: absolute;
+    z-index: 2;
+    top: 30px;
+    left: 30px;
+}
+.tournament__image-vector_96 {
+    /* width: 338px;
+    height: 340px; */
+    position: absolute;
+    z-index: 5;
+    top: 30px;
+    left: 30px;
+}
+.tournament__image-knight_black {
+    /* width: 338px;
+    height: 340px; */
+    position: absolute;
+    z-index: 6;
+    top: 30px;
+    left: 30px;
+}
+.tournament__image-hand {
+    /* width: 338px;
+    height: 340px; */
+    position: absolute;
+    z-index: 6;
+    top: 30px;
+    left: 30px;
+}
+
+.tournament__title {
+    grid-area: 1/2;
+    margin: 0;
+    font-family: var(--font-merriweather);
+    font-size: 36px;
+    line-height: 48px;
+    text-align: start;
+    color: var(--color-default);
+    text-transform: uppercase;
+    font-weight: 400;
+}
+.tournament__title span {
+    color: var(--color-warn);
+    font-weight: 600;
+}
+.tournament__table {
+    grid-area: 2/2;
+    margin: 0;
+    margin-top: 60px;
+    margin-bottom: 48px;
+    display: grid;
+    grid-template-columns: 306px 1fr;
+}
+.tournament__name {
+    margin: 0;
+    border: 2px solid var(--color-grey);
+    border-right: none;
+    font-weight: 600;
+    padding: 16px;
+}
+.tournament__label {
+    border: 2px solid var(--color-grey);
+    border-left: none;
+    padding: 16px;
+}
+
+.first {
+    padding-top: 0;
+    border-top: none;
+}
+
+.end {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.tournament__help {
+    grid-area: 3/2;
+    margin: 0;
+    color: var(--color-blue);
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.stages {
+    position: relative;
+    margin-top: 200px;
+}
+
+.stages__title {
+    margin: 0;
+    position: relative;
+    max-width: 800px;
+    text-align: start;
+    font-size: 54px;
+    line-height: 65px;
+    color: var(--color-default);
+    text-transform: uppercase;
+    font-family: var(--font-merriweather);
+    font-weight: 400;
+}
+
+.stages__subtitle {
+    text-align: start;
+    text-transform: capitalize;
+    max-width: 280px;
+    font-family: var(--font-default);
+    color: var(--color-blue);
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 20px;
+}
+
+.stages__list {
+    margin: 0;
+    padding: 0;
+    margin-top: 64px;
+    list-style-type: none;
+    counter-reset: num;
+}
+
+.stages__item {
+    margin: 0;
+    position: relative;
+    text-align: start;
+    font-size: 20px;
+    line-height: 24px;
+    padding: 20px;
+    padding-left: 72px;
+    padding-bottom: 160px;
+    background-image: url("../images/stages-bg.png"), url("../images/stages-bg-2.png");
+    background-repeat: repeat;
+    background-position: 50% 50%;
+    background-size: 100% 100%;
+    background-color: var(--background-beige);
+}
+
+.stages__item::before {
+    font-weight: 600;
+    content: counter(num);
+    counter-increment: num;
+    display: inline-block;
+    position: absolute;
+    background-color: var(--color-white);
+    top: 20px;
+    left: 20px;
+    text-align: center;
+    padding-top: 5px;
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    color: var(--color-default);
+}
+
+.stages__image {
+    position: absolute;
+    bottom: 10px;
+    right: -35px;
+    z-index: 101;
+}
+
+.info {
+    padding: 40px 22px;
+    background-color: var(--background-beige);
+}
+
+.info__description {
+    padding: 0;
+    margin: 0;
+    text-align: start;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--color-default);
+}
+
+.slider-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider-controls {
+    display: flex;
+    width: 151px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slider-indicators {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.slider-indicator {
+    width: 10px;
+    height: 10px;
+    background-color: #d9d9d9;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider-indicator.active {
+    background-color: var(--color-default);
+}
+
+.players {
+    margin-bottom: 140px;
+}
+
+.players {
+    position: relative;
+    margin-top: 200px;
+}
+
+.players__title {
+    margin: 0;
+    margin-bottom: 60px;
+    text-align: start;
+    font-size: 54px;
+    line-height: 48px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--color-default);
+    font-family: var(--font-merriweather);
+}
+
+.players__slider {
+    max-width: 1366px;
+}
+
+.players__slider-controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.players__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.players__item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.players__subtitle {
+    margin: 0;
+    margin-top: 28px;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 600;
+    color: var(--color-default);
+}
+
+.players__description {
+    margin: 0;
+    font-size: 20px;
+    line-height: 24px;
+    margin-top: 6px;
+    font-weight: 400;
+    color: var(--color-grey);
+}
+
+.players__button {
+    margin: 0;
+    margin-top: 20px;
+    display: inline-flex;
+    text-align: center;
+    font-family: var(--font-default);
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--color-blue);
+    padding: 12px;
+    width: 113px;
+    min-height: 35px;
+    border: 1px solid var(--color-blue);
+    border-radius: 62px;
+    cursor: pointer;
+    background-color: var(--color-white);
+}
+
+.players__control {
+    display: inline-flex;
+    text-align: center;
+    font-family: var(--font-default);
+    font-size: 17px;
+    line-height: 20px;
+    color: var(--color-white);
+    width: 44px;
+    height: 44px;
+    padding: 13px 19px 13px 17px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: var(--color-btn);
+}
+
+.players__svg--right {
+    rotate: 180deg;
+}
+
+.players__image {
+    position: absolute;
+    top: 21px;
+    left: 0;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.players__box {
+    background-image: url("../images/stages-bg.png"), url("../images/stages-bg-2.png");
+    background-color: var(--background-beige);
+    border-radius: 100%;
+    position: relative;
+    width: 320px;
+    height: 320px;
+    overflow: hidden;
+    order: -1;
+}
+
+.slide {
+    flex: 0 0 100%;
+}
+
+@media (max-width: 1366px) {
+    .container {
+        max-width: 375px;
+        padding: 0 20px;
+    }
+
+    .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .tournament {
+        position: relative;
+        grid-template-rows: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tournament__image {
+    }
+
+    .tournament__table {
+        margin: 0;
+        margin-bottom: 20px;
+        grid-template-columns: 1fr;
+    }
+
+    .tournament__label {
+        padding: 0;
+        padding: 20px 0;
+        border: none;
+        border-bottom: 1px solid var(--color-default);
+    }
+
+    .tournament__name {
+        padding: 0;
+        padding: 20px 0;
+        border: none;
+    }
+
+    .tournament__title {
+        font-size: 28px;
+        line-height: 135%;
+        margin-bottom: 20px;
+    }
+    .first {
+        padding: 20px 0;
+    }
+    .end {
+        padding: 20px 0;
+    }
+
+    .promo {
+    }
+
+    .promo__box {
+        flex-wrap: wrap;
+    }
+
+    .promo__description {
+        max-width: 375px;
+    }
+
+    .promo__title {
+        max-width: 375px;
+    }
+
+    .promo__button {
+        width: 100%;
+        height: auto;
+        text-align: center;
+    }
+
+    .promo__title {
+        font-size: 36px;
+        line-height: 110%;
+    }
+
+    /* fit
+    .promo__image {
+        top: 308px;
+        right: -765px;
+        height: 365px;
+        object-fit: contain;
+    } */
+
+    .players {
+        margin-bottom: 100px;
+    }
+
+    .players__box {
+        width: 255px;
+        height: 255px;
+    }
+
+    .players__image {
+        top: 20px;
+    }
+
+    .players__slider-controls {
+        position: relative;
+        margin: 0 auto;
+        margin-top: 40px;
+    }
+
+    .players__title {
+        font-size: 36px;
+        line-height: 40px;
+        text-align: start;
+    }
+
+    .stages__image {
+        bottom: 70px;
+        left: 0;
+    }
+
+    .stages__item {
+        padding: 60px 20px 106px 72px;
+    }
+
+    .stages__list {
+        margin-top: 0;
+    }
+
+    .stages__title {
+        position: relative;
+        font-size: 36px;
+        line-height: 40px;
+        padding-bottom: 20px;
+    }
+
+    .slide {
+        flex: 0 0 100%;
+    }
+
+    .support {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .support__title {
+        font-size: 28px;
+        line-height: 135%;
+    }
+}
