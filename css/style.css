@@ -1,5 +1,27 @@
-@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap");
+@font-face {
+    font-family: "GolosText_400";
+    src: url("../fonts/GolosText-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "GolosText_500";
+    src: url("../fonts/GolosText-Medium.ttf") format("truetype");
+}
+@font-face {
+    font-family: "GolosText_700";
+    src: url("../fonts/GolosText-Bold.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Merriweather_300";
+    src: url("../fonts/Merriweather-Light.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Merriweather_400";
+    src: url("../fonts/Merriweather-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Merriweather_700";
+    src: url("../fonts/Merriweather-Bold.ttf") format("truetype");
+}
 
 :root {
     --color-white: #ffffff;
@@ -12,53 +34,54 @@
     --color-yellow: #fbce51;
     --hover-black: var(--color-btn);
     --hover-blue: var(--color-blue);
-    --background-pink: #ffe5e5;
     --background-beige: #e9ded4;
     --background-default: var(--color-white);
-    --font-golostext: "Golos text";
-    --font-merriweather: "Merriweather";
-    --font-default: var(--font-golostext), Arial, Helvetica, sans-serif;
+    --font-golostext_400: "GolosText_400";
+    --font-default: var(--font-golostext_400), Arial, Helvetica, sans-serif;
 }
 
 *,
 *::before,
 *::after {
     box-sizing: border-box;
-}
-html,
-body {
     margin: 0;
     padding: 0;
+}
+/* ok */
+
+html,
+body {
     min-height: 100vh;
     overflow-x: hidden;
 }
+/* ok */
+
 html {
-    font-weight: 400;
     font-size: 18px;
     line-height: normal;
     font-style: normal;
     font-family: var(--font-default);
 }
+/* ok */
+
 body {
     width: 100%;
     height: 100%;
 }
+/* ok */
+
 a {
     text-decoration: none;
 }
+/* ok */
+
 img {
     display: block;
     max-width: 100%;
     height: auto;
 }
+/* ok */
 
-.container {
-    text-align: center;
-    position: relative;
-    max-width: 1366px;
-    margin: 0 auto;
-    padding: 0 50px;
-}
 .wrapper-box {
     position: relative;
     display: flex;
@@ -74,6 +97,32 @@ img {
     background-color: var(--color-white);
     padding: 0 22px;
 }
+.container {
+    text-align: center;
+    position: relative;
+    max-width: 1366px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+.wrapper-box::before {
+    position: absolute;
+    z-index: 10;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 1620px;
+    margin: 0 auto;
+    background: repeating-linear-gradient(
+        to right,
+        rgba(255, 0, 0, 0.08) 0,
+        rgba(255, 0, 0, 0.08) 100px,
+        rgba(255, 0, 0, 0) 100px,
+        rgba(255, 0, 0, 0) 125px
+    );
+    pointer-events: none;
+}
 
 /* header */
 
@@ -84,7 +133,7 @@ img {
 }
 .header div {
     text-transform: uppercase;
-    font-weight: 700;
+    font-family: "GolosText_700";
     font-size: 17px;
     line-height: 18px;
     width: 150px;
@@ -121,28 +170,25 @@ img {
 }
 .promo__container {
     position: absolute;
-    z-index: 6;
+    z-index: 7;
     top: 35px;
     left: 70px;
 }
 .promo__title {
     text-align: start;
     max-width: 542px;
-    margin: 0;
     margin-top: 62px;
     font-size: 60px;
     line-height: 66px;
-    font-weight: 400;
-    font-family: var(--font-merriweather);
+    font-family: "Merriweather_400";
     text-transform: uppercase;
     color: var(--color-default);
 }
 .desc {
-    text-align: center;
     margin-top: 0;
+    text-align: center;
 }
 .promo__description {
-    margin: 0;
     margin-top: 24px;
     text-align: center;
     max-width: 542px;
@@ -151,7 +197,6 @@ img {
     color: var(--color-default);
 }
 .promo__box {
-    margin: 0;
     margin-top: 40px;
     display: flex;
     gap: 16px;
@@ -159,34 +204,35 @@ img {
 .promo__button {
     display: inline-flex;
     text-align: center;
-    font-family: var(--font-default);
-    font-size: 16px;
-    line-height: 20px;
-    color: var(--color-white);
-    padding: 16px 50px 20px 50px;
+    justify-content: center;
     width: 263px;
     height: 72px;
+    padding: 16px 50px 20px 50px;
+    background-color: var(--color-btn);
+    color: var(--color-white);
+    font-family: "GolosText_500";
+    font-size: 16px;
+    line-height: 20px;
     border: none;
     border-radius: 66px;
     cursor: pointer;
-    font-weight: 500;
-    background-color: var(--color-btn);
-}
-.promo__button.about {
-    background-color: inherit;
-    border: 1px solid var(--color-btn);
-    color: var(--color-btn);
-}
-.promo__button.about:hover {
-    background-color: var(--color-yellow);
-    color: var(--color-btn);
-    border-color: var(--color-yellow);
 }
 .promo__button:hover {
-    background-color: inherit;
-    border: 1px solid var(--color-btn);
+    background-color: var(--color-yellow);
     color: var(--color-btn);
+    border: none;
 }
+.promo__button_about {
+    background: none;
+    color: var(--color-default);
+    border: 1px solid var(--color-btn);
+}
+.promo__button_about:hover {
+    background-color: var(--color-btn);
+    color: var(--color-white);
+    border: 1px solid var(--color-btn);
+}
+
 .promo__image_city {
     position: absolute;
     z-index: 4;
@@ -243,11 +289,15 @@ img {
     justify-content: center;
     align-items: center;
 }
+.promo__ellipse svg {
+    width: 660px;
+    height: 660px;
+}
 #textPath {
     fill: var(--color-yellow);
 }
 .promo__ellipse-text {
-    font-family: var(--font-merriweather);
+    font-family: "Merriweather_300";
     text-transform: uppercase;
     font-size: 18px;
     fill: var(--color-warn);
@@ -257,13 +307,14 @@ img {
 
 .runline {
     background-color: var(--color-warn);
+    position: relative;
+    z-index: 11;
 }
 .runline__list {
-    margin: 0;
     list-style-position: inside;
     font-size: 22px;
     line-height: 24px;
-    font-family: var(--font-merriweather);
+    font-family: "Merriweather_300";
     color: var(--color-white);
     padding: 18px 30px;
     text-transform: uppercase;
@@ -286,18 +337,16 @@ img {
     margin-top: 80px;
 }
 .support__title {
-    margin: 0;
     text-align: start;
     color: var(--color-default);
-    font-family: var(--font-merriweather);
-    font-weight: 400;
+    font-family: "Merriweather_300";
     font-size: 35px;
     line-height: 48px;
     text-transform: uppercase;
 }
 .support__title span {
     color: var(--color-warn);
-    font-weight: 600;
+    font-family: "Merriweather_700";
 }
 .support__image {
     border-radius: 100%;
@@ -363,33 +412,43 @@ img {
 
 .tournament__title {
     grid-area: 1/2;
-    margin: 0;
-    font-family: var(--font-merriweather);
+    font-family: "Merriweather_300";
     font-size: 36px;
     line-height: 48px;
     text-align: start;
     color: var(--color-default);
     text-transform: uppercase;
-    font-weight: 400;
 }
 .tournament__title span {
     color: var(--color-warn);
-    font-weight: 600;
+    font-family: "Merriweather_700";
 }
 .tournament__table {
     grid-area: 2/2;
-    margin: 0;
     margin-top: 55px;
     margin-bottom: 48px;
     display: grid;
     grid-template-columns: 306px 1fr;
 }
 .tournament__name {
-    margin: 0;
     border: 2px solid var(--color-grey);
     border-right: none;
-    font-weight: 600;
+    font-family: "GolosText_700";
     padding: 16px;
+}
+.tournament__name span {
+    position: relative;
+    display: inline-block;
+}
+.tournament__name span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 40%;
+    height: 2px;
+    background-color: var(--color-warn);
+    z-index: 1;
 }
 .tournament__label {
     border: 2px solid var(--color-grey);
@@ -406,11 +465,9 @@ img {
 }
 .tournament__help {
     grid-area: 3/2;
-    margin: 0;
     color: var(--color-blue);
     font-size: 20px;
     line-height: 24px;
-    font-weight: 400;
 }
 
 .stages {
@@ -423,16 +480,14 @@ img {
     position: relative;
 }
 .section-title {
-    margin: 0;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     text-align: start;
     font-size: 54px;
     line-height: 48px;
     line-height: 1.2;
-    font-weight: 400;
     text-transform: uppercase;
     color: var(--color-default);
-    font-family: var(--font-merriweather);
+    font-family: "Merriweather_300";
 }
 .stage-inner .section-title {
     max-width: 806px;
@@ -440,11 +495,9 @@ img {
 }
 .section-subtitle--mobile {
     display: none;
-    font-family: var(--font-golostext);
     font-size: 20px;
     text-transform: none;
     color: var(--color-blue);
-    font-weight: 400;
 }
 .stage-inner .section-title::after {
     content: "Будущие источники обогащения васюкинцев";
@@ -455,7 +508,8 @@ img {
     display: flex;
     width: 100%;
     max-width: 280px;
-    font-family: var(--font-golostext);
+    font-family: "GolosText_400";
+    font-weight: normal;
     font-size: 20px;
     text-transform: none;
     color: var(--color-blue);
@@ -503,13 +557,12 @@ img {
     justify-content: center;
     align-items: center;
     background-color: var(--color-white);
-    font-weight: 600;
+    font-family: "GolosText_500";
     line-height: 1.2;
     border-radius: 50%;
 }
 .stage-description {
-    font-weight: 500;
-    margin: 0;
+    font-family: "GolosText_500";
     padding: 10px;
 }
 .stage-item:last-child .stage-description {
@@ -519,7 +572,7 @@ img {
     position: absolute;
     z-index: 40;
     right: -62px;
-    bottom: 60px;
+    bottom: 0px;
 }
 
 /* players */
@@ -533,7 +586,7 @@ img {
 
 .section--members {
     margin-top: 200px;
-    margin-bottom: 140px;
+    margin-bottom: 130px;
 }
 
 .members-inner {
@@ -545,16 +598,15 @@ img {
     align-items: center;
 }
 .members-carousel {
-    margin-top: 60px;
     height: 480px;
-    overflow-x: hidden;
     position: relative;
+    overflow-x: hidden;
 }
 .members-line {
     display: flex;
     gap: 20px;
     position: absolute;
-    z-index: 10;
+    z-index: 9;
     left: 0;
     top: 0;
     transition: all 0.3s ease;
@@ -562,6 +614,7 @@ img {
 .members-item {
     padding: 0 37px;
     transition: 0.3s ease;
+    max-width: 394px;
 }
 
 .members-item img {
@@ -574,7 +627,7 @@ img {
     justify-content: center;
 }
 .member-name {
-    font-weight: 600px;
+    font-family: "GolosText_500";
     font-size: 24px;
     line-height: 1.2;
     margin: 28px 0 6px;
@@ -591,11 +644,10 @@ img {
     margin: 0 auto;
     text-align: center;
     color: var(--color-blue);
-    font-weight: 500;
+    font-family: "GolosText_500";
     padding: 12px;
     border-radius: 62px;
     border: 1px solid var(--color-blue);
-    transition: 1s ease;
 }
 .member-link:hover {
     color: var(--color-white);
@@ -606,6 +658,7 @@ img {
     margin: 0 auto;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 14px;
 }
 .arrow-wrapper--stage {
@@ -631,7 +684,6 @@ img {
     height: 44px;
     border-radius: 50%;
     background-color: var(--color-default);
-    transition: 0.6s ease;
     cursor: pointer;
 }
 .arrow:first-child svg {
@@ -655,8 +707,6 @@ img {
 }
 
 .info__description {
-    padding: 0;
-    margin: 0;
     text-align: start;
     font-size: 16px;
     line-height: 20px;
@@ -686,20 +736,17 @@ img {
     }
 
     .tournament__table {
-        margin: 0;
         margin-bottom: 20px;
         grid-template-columns: 1fr;
     }
 
     .tournament__label {
-        padding: 0;
         padding: 20px 0;
         border: none;
         border-bottom: 1px solid var(--color-default);
     }
 
     .tournament__name {
-        padding: 0;
         padding: 20px 0;
         border: none;
     }
@@ -716,7 +763,8 @@ img {
         padding: 20px 0;
     }
 
-    .promo {
+    .promo__container {
+        max-width: 375px;
     }
 
     .promo__box {
@@ -724,10 +772,6 @@ img {
     }
 
     .promo__description {
-        max-width: 1260px;
-    }
-
-    .promo__title {
         max-width: 1260px;
     }
 
@@ -740,6 +784,7 @@ img {
     .promo__title {
         font-size: 36px;
         line-height: 110%;
+        max-width: 375px;
     }
 
     /* fit
@@ -868,12 +913,6 @@ img {
         width: 100%;
         padding: 20px 0;
     }
-    .header-button:last-child {
-        padding: 20px 0;
-        background-color: #fff;
-        color: #1f1f1f;
-        border: none;
-    }
 
     /* ANNOUNCEMENT */
     .announcement-inner {
@@ -963,6 +1002,85 @@ img {
     }
 }
 @media screen and (max-width: 576px) {
+    .wrapper-box::before {
+        background: none;
+    }
+    .header div {
+        font-size: 14px;
+    }
+    .promo {
+        min-height: 775px;
+        padding-top: 20px;
+        padding-bottom: 0px;
+    }
+    .promo__container {
+        top: 10px;
+        left: 15px;
+    }
+    .promo__header {
+        margin-left: 0px;
+    }
+    .promo__box {
+        margin-top: 30px;
+    }
+    .promo__button {
+        padding: 13px 30px 13px 30px;
+    }
+    .promo__button_about {
+        background: var(--color-white);
+        border: 1px solid var(--color-white);
+    }
+    .promo__image_city {
+        height: 246px;
+        min-width: 885px;
+        top: 510px;
+        right: -130px;
+    }
+    .promo__image_path {
+        height: 260px;
+        min-width: 870px;
+        top: 510px;
+        right: -115px;
+    }
+    .promo__image_knight {
+        width: 100px;
+        height: 121px;
+        top: 640px;
+        right: 110px;
+    }
+    .promo__image_king {
+        width: 60px;
+        height: 116px;
+        top: 525px;
+        right: 230px;
+    }
+    .promo__image_queen {
+        width: 60px;
+        height: 104px;
+        top: 480px;
+        right: 65px;
+    }
+    .promo__image_pawn {
+        display: none;
+    }
+    .promo__ellipse {
+        width: 297px;
+        height: 297px;
+        top: 270px;
+        right: 30px;
+    }
+    .promo__ellipse svg {
+        width: 297px;
+        height: 297px;
+    }
+    /* g {
+        transform: rotate(180, 148.5, 148.5);
+    } */
+    .runline__list {
+        font-size: 16px;
+        line-height: 0px;
+    }
+    /* //// */
     .section-subtitle--mobile {
         margin-bottom: 148px;
     }
@@ -972,4 +1090,6 @@ img {
         left: 0;
         max-width: 335px;
     }
+
+    /* ok */
 }

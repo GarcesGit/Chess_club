@@ -124,6 +124,16 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 });
 
+function updatePath() {
+    const path = document.getElementById("textPath");
+    if (window.innerWidth <= 576) {
+        path.setAttribute("d", "M150,25 a150,150 0 1,1 0,300 a150,150 0 1,1 0,-300");
+    }
+}
+updatePath();
+
+window.addEventListener("resize", updatePath);
+
 window.addEventListener("resize", () => {
     widthMember = memberItem.clientWidth;
     stageItemWidth = stageItem.clientWidth;
