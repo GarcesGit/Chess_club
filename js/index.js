@@ -1,58 +1,46 @@
-const memberArrowLeft = document.querySelector("#MEMBER-ARROW-LEFT");
-const memberArrowRight = document.querySelector("#MEMBER-ARROW-RIGHT");
-const memberCarousel = document.querySelector(".members-carousel");
-const memberLine = document.querySelector(".members-line");
-const memberItem = document.querySelector(".members-item");
-const countSliderMembers = document.querySelector(".arrow-wrapper--member p span");
+// Подгонка текста в элипсе
 
-let minCountMember = Math.round(
-    memberCarousel.clientWidth / (memberItem.clientWidth + 20)
-);
-let maxCountMember = memberLine.childElementCount;
-let widthMember = memberItem.clientWidth;
-let offsetMember = 0;
-let countMember = 0;
-
-memberArrowLeft.addEventListener("click", () => {
-    offsetMember -= widthMember + 20;
-    if (countMember == minCountMember) {
-        offsetMember =
-            widthMember * (maxCountMember - minCountMember) +
-            (maxCountMember - minCountMember) * 20;
-        countMember = maxCountMember;
+function updatePath() {
+    const path = document.getElementById("textPath");
+    if (window.innerWidth <= 576) {
+        path.setAttribute("d", "M583,153 a120,120 0 1,1 0,265 a120,120 0 1,1 0,-265");
     } else {
-        countMember--;
+        path.setAttribute("d", "M330,25 a305,305 0 1,1 0,610 a305,305 0 1,1 0,-610");
     }
-    countSliderMembers.innerHTML = countMember;
-    memberLine.style.left = "-" + offsetMember + "px";
-});
+}
+updatePath();
 
-memberArrowRight.addEventListener("click", () => {
-    offsetMember += widthMember + 20;
-    if (countMember == maxCountMember) {
-        offsetMember = 0;
-        countMember = minCountMember;
-    } else {
-        countMember++;
-    }
-    countSliderMembers.innerHTML = countMember;
-    memberLine.style.left = "-" + offsetMember + "px";
-});
+// Анимация самолета
 
-// ANCHORS
-const anchors = document.querySelectorAll('a[href*="#"]');
-for (let anchor of anchors) {
-    anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        const blockID = anchor.getAttribute("href").substr(1);
-        document.getElementById(blockID).scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-        });
-    });
+function startAnimation() {
+    const image = document.querySelector(".stage-image");
+
+    const moveDistance = window.innerWidth + 1500;
+
+    const animateImage = () => {
+        image.style.transition = "transform 6s ease";
+        image.style.transform = `translateY(-550px) translateX(-${moveDistance}px)`;
+
+        setTimeout(() => {
+            image.style.transition = "none";
+            image.style.transform = `translateY(0) translateX(${window.innerWidth}px)`;
+
+            setTimeout(() => {
+                image.style.transition = "transform 3s";
+                image.style.transform = `translateY(0) translateX(0)`;
+
+                setTimeout(animateImage, 5000);
+            }, 100);
+        }, 3000);
+    };
+
+    setTimeout(animateImage, 3000);
 }
 
-// STAGE SLIDER
+// startAnimation();
+
+// Слайдер этапов
+
 const stageArrowLeft = document.querySelector("#STAGE-ARROW-LEFT");
 const stageArrowRight = document.querySelector("#STAGE-ARROW-RIGHT");
 const stageCarousel = document.querySelector(".stage-carousel");
@@ -118,27 +106,81 @@ function toggleClassDots() {
         }
     });
 }
+
+// Слайдер участников
+
+const memberArrowLeft = document.querySelector("#MEMBER-ARROW-LEFT");
+const memberArrowRight = document.querySelector("#MEMBER-ARROW-RIGHT");
+const memberCarousel = document.querySelector(".members-carousel");
+const memberLine = document.querySelector(".members-line");
+const memberItem = document.querySelector(".members-item");
+const countSliderMembers = document.querySelector(".arrow-wrapper--member p span");
+
+let minCountMember = Math.round(
+    memberCarousel.clientWidth / (memberItem.clientWidth + 20)
+);
+let maxCountMember = memberLine.childElementCount;
+let widthMember = memberItem.clientWidth;
+let offsetMember = 0;
+let countMember = 0;
+
+const updateSlider = (direction) => {
+    if (direction === "right") {
+        offsetMember += widthMember + 20;
+        if (countMember === maxCountMember) {
+            offsetMember = 0;
+            countMember = minCountMember;
+        } else {
+            countMember++;
+        }
+    } else {
+        offsetMember -= widthMember + 20;
+        if (countMember === minCountMember) {
+            offsetMember =
+                widthMember * (maxCountMember - minCountMember) +
+                (maxCountMember - minCountMember) * 20;
+            countMember = maxCountMember;
+        } else {
+            countMember--;
+        }
+    }
+    countSliderMembers.innerHTML = countMember;
+    memberLine.style.left = "-" + offsetMember + "px";
+};
+
+memberArrowLeft.addEventListener("click", () => updateSlider("left"));
+memberArrowRight.addEventListener("click", () => updateSlider("right"));
+
+setInterval(() => {
+    updateSlider("right");
+}, 4000);
+
+const anchors = document.querySelectorAll('a[href*="#"]');
+for (let anchor of anchors) {
+    anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const blockID = anchor.getAttribute("href").substr(1);
+        document.getElementById(blockID).scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        });
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     countSliderMembers.innerHTML = countMember = Math.round(
         memberCarousel.clientWidth / (memberItem.clientWidth + 20)
     );
 });
 
-function updatePath() {
-    const path = document.getElementById("textPath");
-    if (window.innerWidth <= 576) {
-        path.setAttribute("d", "M150,25 a150,150 0 1,1 0,300 a150,150 0 1,1 0,-300");
-    }
-}
-updatePath();
-
-window.addEventListener("resize", updatePath);
-
 window.addEventListener("resize", () => {
+    updatePath();
+
     widthMember = memberItem.clientWidth;
-    stageItemWidth = stageItem.clientWidth;
+    minCountMember = Math.round(
+        memberCarousel.clientWidth / (memberItem.clientWidth + 20)
+    );
     countSliderMembers.innerHTML = countMember = Math.round(
         memberCarousel.clientWidth / (memberItem.clientWidth + 20)
     );
-    minCount = Math.round(memberCarousel.clientWidth / (memberItem.clientWidth + 20));
 });
