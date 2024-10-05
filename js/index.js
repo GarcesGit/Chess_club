@@ -1,4 +1,4 @@
-// Подгонка текста в элипсе
+// Настройка текста в эллипсе
 
 function updatePath() {
     const path = document.getElementById("textPath");
@@ -13,7 +13,7 @@ updatePath();
 // Анимация самолета
 
 function startAnimation() {
-    const image = document.querySelector(".stage-image");
+    const image = document.querySelector(".stage_image");
 
     const moveDistance = window.innerWidth + 1500;
 
@@ -37,16 +37,16 @@ function startAnimation() {
     setTimeout(animateImage, 3000);
 }
 
-// startAnimation();
+startAnimation();
 
 // Слайдер этапов
 
-const stageArrowLeft = document.querySelector("#STAGE-ARROW-LEFT");
-const stageArrowRight = document.querySelector("#STAGE-ARROW-RIGHT");
-const stageCarousel = document.querySelector(".stage-carousel");
-const stageLine = document.querySelector(".stage-line");
-const stageItem = document.querySelector(".stage-line .stage-item");
-const dotsStage = document.querySelectorAll(".dots-wrapper span");
+const stageArrowLeft = document.querySelector("#stage__arrow_left");
+const stageArrowRight = document.querySelector("#stage__arrow_right");
+const stageCarousel = document.querySelector(".stage__carousel");
+const stageLine = document.querySelector(".stage__line");
+const stageItem = document.querySelector(".stage__line .stage__item");
+const stageDots = document.querySelectorAll(".dots-wrapper span");
 
 let stageItemWidth = stageItem.clientWidth;
 let maxCountStage = stageLine.childElementCount;
@@ -75,7 +75,7 @@ stageArrowRight.addEventListener("click", () => {
     stageLine.style.left = "-" + offsetStage + "px";
 });
 
-for (let dot of dotsStage) {
+for (let dot of stageDots) {
     dot.addEventListener("click", (e) => {
         countStage = dot.dataset.id;
         toggleClassDots();
@@ -99,7 +99,7 @@ function checkArrowDisabled() {
 }
 
 function toggleClassDots() {
-    dotsStage.forEach((element) => {
+    stageDots.forEach((element) => {
         element.classList.remove("active");
         if (element.dataset.id == countStage) {
             element.classList.add("active");
@@ -109,12 +109,12 @@ function toggleClassDots() {
 
 // Слайдер участников
 
-const memberArrowLeft = document.querySelector("#MEMBER-ARROW-LEFT");
-const memberArrowRight = document.querySelector("#MEMBER-ARROW-RIGHT");
-const memberCarousel = document.querySelector(".members-carousel");
-const memberLine = document.querySelector(".members-line");
-const memberItem = document.querySelector(".members-item");
-const countSliderMembers = document.querySelector(".arrow-wrapper--member p span");
+const memberArrowLeft = document.querySelector("#member__arrow_left");
+const memberArrowRight = document.querySelector("#member__arrow_right");
+const memberCarousel = document.querySelector(".members__carousel");
+const memberLine = document.querySelector(".members__line");
+const memberItem = document.querySelector(".members__item");
+const countSliderMembers = document.querySelector(".member__arrow-wrapper p span");
 
 let minCountMember = Math.round(
     memberCarousel.clientWidth / (memberItem.clientWidth + 20)
